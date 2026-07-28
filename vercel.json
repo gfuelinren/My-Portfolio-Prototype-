@@ -4,7 +4,23 @@
     { "src": "Portfolio/**", "use": "@vercel/static" }
   ],
   "routes": [
+    { "handle": "filesystem" },
     { "src": "^/$", "dest": "/Portfolio/index.html" },
-    { "src": "^/(.*)$", "dest": "/Portfolio/$1" }
+    { "src": "^/Portfolio/(.*)$", "dest": "/Portfolio/$1" },
+    { "src": "^/(.*)$", "dest": "/Portfolio/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/Portfolio/(.*)\\.(js|css)$",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/Portfolio/(.*)\\.(png|jpg|jpeg|svg|webp|gif)$",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
   ]
 }
