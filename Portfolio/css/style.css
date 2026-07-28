@@ -1,0 +1,165 @@
+:root{
+  --primary: #0077cc;
+  --primary-600: #006bb3;
+  --bg-dark-1: #061223;
+  --bg-dark-2: #0b1220;
+  --muted: #cfe8ff;
+  --gap: 18px;
+  --container-padding: 18px;
+}
+
+/* Reset */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: Inter, system-ui, Arial, sans-serif;
+  background:
+    radial-gradient(800px 300px at 10% 20%, rgba(0,119,204,0.06), transparent),
+    radial-gradient(600px 300px at 90% 80%, rgba(0,119,204,0.04), transparent),
+    linear-gradient(180deg,var(--bg-dark-1),var(--bg-dark-2) 40%);
+  color:var(--muted);
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  scroll-behavior:smooth;
+  min-height:100vh;
+  padding:0;
+}
+
+/* Container helper */
+.container{max-width:1100px;margin:0 auto;padding:var(--container-padding)}
+
+/* TOPBAR - mobile first */
+.topbar{
+  position:sticky;top:0;z-index:60;
+  background:linear-gradient(180deg, rgba(6,18,35,0.8), rgba(6,18,35,0.5));
+  backdrop-filter: blur(6px);
+  border-bottom:1px solid rgba(255,255,255,0.03);
+}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-weight:700;font-size:1.05rem;opacity:0.95}
+
+/* hamburger toggle (visible on mobile) */
+.menu-toggle{
+  display:inline-grid;
+  place-items:center;
+  width:44px;height:44px;border-radius:8px;border:none;
+  background:transparent;color:var(--muted);cursor:pointer;
+  margin-left:8px;
+}
+.menu-toggle .hamburger{
+  display:block;width:22px;height:2px;border-radius:2px;background:var(--muted);
+  position:relative;box-shadow:0 6px 0 var(--muted),0 -6px 0 var(--muted);
+}
+/* when expanded will get .open class via JS, we apply transforms there */
+
+/* topnav: hidden on mobile, becomes visible when .open is added */
+.topnav{
+  position:fixed;
+  inset:64px 16px auto 16px; /* below topbar */
+  background:linear-gradient(180deg, rgba(6,18,35,0.98), rgba(6,18,35,0.95));
+  border-radius:12px;
+  padding:12px;
+  box-shadow: 0 20px 50px rgba(2,6,23,0.6);
+  display:none;
+  flex-direction:column;
+  gap:10px;
+  z-index:70;
+  width:calc(100% - 32px);
+  max-height:70vh;
+  overflow:auto;
+  border:1px solid rgba(0,119,204,0.04);
+}
+.topnav.open{ display:flex; }
+
+/* nav links - mobile touch targets */
+.topnav a{
+  color:rgba(255,255,255,0.92);
+  text-decoration:none;
+  padding:12px 14px;
+  border-radius:8px;
+  font-weight:600;
+}
+.topnav a:hover{ background:rgba(0,119,204,0.06); color:var(--primary) }
+
+/* PAGE and SNAP (each section fills viewport) */
+.page{ scroll-snap-type: y mandatory; overflow-y:auto; min-height:100vh; }
+.snap-section{ scroll-snap-align:start; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:32px 0; position:relative }
+
+/* HERO - mobile stacked */
+.hero-inner{ display:flex; flex-direction:column-reverse; gap:var(--gap); align-items:center; width:100%; padding:12px }
+.hero-left{ width:100%; text-align:center }
+.initial{ font-size:3.4rem; font-weight:800; color:rgba(255,255,255,0.95); margin:6px 0; text-shadow:0 6px 24px rgba(0,119,204,0.12) }
+h1{ font-size:1.35rem; margin:8px 0 }
+.accent{ color:var(--primary); font-weight:800; text-shadow:0 6px 16px rgba(0,119,204,0.14) }
+.desc{ color:rgba(230,238,248,0.9); margin:10px auto; max-width:100%; padding:0 8px }
+
+/* socials and CTAs - mobile friendly */
+.socials{ display:flex; gap:8px; justify-content:center; margin-top:10px; flex-wrap:wrap }
+.socials a{ width:44px; height:44px; display:inline-grid; place-items:center; border-radius:10px; background:rgba(0,119,204,0.06); color:var(--primary); text-decoration:none; border:1px solid rgba(0,119,204,0.06) }
+.hero-cta{ display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap }
+.btn{ padding:10px 14px; border-radius:999px; font-weight:700; cursor:pointer; border:2px solid transparent; min-width:120px }
+.btn-primary{ background:linear-gradient(90deg,var(--primary),var(--primary-600)); color:#fff; box-shadow:0 12px 28px rgba(0,119,204,0.18) }
+.btn-outline{ background:transparent; color:var(--primary); border-color:rgba(0,119,204,0.18) }
+
+/* Profile ring - smaller on mobile */
+.hero-right{ width:100%; display:flex; justify-content:center; align-items:center }
+.profile-ring{ position:relative; width:220px; height:220px; border-radius:50%; display:flex; align-items:center; justify-content:center; background: radial-gradient(circle at 30% 30%, rgba(0,119,204,0.04), transparent 40%); box-shadow:0 20px 48px rgba(0,119,204,0.06) }
+.profile-ring::before{
+  content:""; position:absolute; inset:-8px; border-radius:50%; background:conic-gradient(from 0deg, rgba(0,119,204,0.95) 0deg 40deg, rgba(0,119,204,0.6) 40deg 120deg, rgba(0,119,204,0.95) 120deg 220deg, rgba(0,119,204,0.55) 220deg 360deg); filter:blur(10px); opacity:0.95; animation: spin 8s linear infinite; z-index:1; pointer-events:none;
+}
+.profile-ring::after{ content:""; position:absolute; inset:12px; border-radius:50%; background: rgba(11,18,32,0.35); z-index:2; pointer-events:none }
+.profile-img{ width:160px; height:160px; border-radius:50%; object-fit:cover; z-index:3; border:4px solid rgba(255,255,255,0.06); box-shadow:0 8px 30px rgba(3,10,20,0.6) }
+
+/* Panels (about, skills, projects, contact) */
+.panel{ width:100%; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:20px; border-radius:12px; box-shadow: 0 12px 30px rgba(2,6,23,0.06); border:1px solid rgba(0,119,204,0.04) }
+.skills-list{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:10px }
+.skills-list li{ background:rgba(0,119,204,0.06); color:var(--primary-600); padding:8px 10px; border-radius:999px; font-weight:600; border:1px solid rgba(0,119,204,0.08) }
+
+/* Scroll indicator */
+.scroll-indicator{ position:absolute; left:50%; transform:translateX(-50%); bottom:18px; width:44px; height:44px; border-radius:999px; border:none; background:transparent; color:var(--muted); display:grid; place-items:center; cursor:pointer }
+.scroll-indicator .arrow{ font-size:18px; color:var(--primary) }
+
+/* Footer */
+.site-footer{ margin-top:18px; padding:12px; text-align:center; color:rgba(255,255,255,0.6) }
+
+/* Animations */
+@keyframes spin{ from{ transform: rotate(0deg) } to{ transform: rotate(360deg) } }
+
+/* ---------- Tablet and Desktop breakpoints ---------- */
+/* Tablet / small laptop */
+@media (min-width:640px){
+  :root{ --container-padding: 22px; --gap:20px }
+  .hero-inner{ gap:28px; padding:0 6px }
+  .initial{ font-size:3.8rem }
+  .profile-ring{ width:260px; height:260px }
+  .profile-img{ width:190px; height:190px }
+}
+
+/* Desktop - show horizontal nav and layout */
+@media (min-width:880px){
+  .menu-toggle{ display:none }              /* hide hamburger */
+  .topnav{ position:static; display:flex; flex-direction:row; gap:10px; width:auto; inset:auto; background:transparent; padding:0; box-shadow:none; max-height:none }
+  .topnav a{ padding:8px 10px }
+  .hero-inner{ flex-direction:row; align-items:center }
+  .hero-left{ flex:1; text-align:left; padding-left:28px }
+  .hero-right{ width:420px; flex-shrink:0; display:flex; justify-content:center }
+  .profile-ring{ width:320px; height:320px; box-shadow:0 30px 80px rgba(0,119,204,0.06) }
+  .profile-ring::before{ inset:-12px; filter:blur(12px) }
+  .profile-img{ width:250px; height:250px }
+  .container{ padding-left:32px; padding-right:32px }
+  .panel{ padding:36px }
+  .skills-list{ justify-content:flex-start }
+}
+
+/* Larger desktops */
+@media (min-width:1200px){
+  .container{ max-width:1200px }
+  .initial{ font-size:4.6rem }
+  .profile-ring{ width:360px; height:360px }
+  .profile-img{ width:280px; height:280px }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .profile-ring::before{ animation:none }
+  .topnav a, .socials a, .btn, .menu-toggle{ transition:none }
+}

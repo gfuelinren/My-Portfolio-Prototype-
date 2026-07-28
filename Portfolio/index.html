@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>My Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+  <div class="container topbar-inner">
+    <div class="logo">My Profile.</div>
+
+    <!-- Mobile menu toggle -->
+    <button class="menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="hamburger"></span>
+    </button>
+
+    <nav id="main-nav" class="topnav" aria-label="Main navigation">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+  </div>
+</header>
+
+    <main class="page"> 
+      <!-- HERO (full viewport) -->
+      <section id="home" class="snap-section hero">
+        <div class="container hero-inner">
+          <div class="hero-left">
+            <p class="hello">Hello, I'm Renjie Gamulo Sicat</p>
+            <div class="initial">Also known as <span class="accent">Liu</span></div>
+            <h1>And I'm a <span class="accent">Full Stack Developer</span></h1>
+            <p class="desc">
+              I create responsive websites and modern web applications using HTML, CSS, JavaScript, PHP and MySQL.
+            </p>
+
+            <div class="socials">
+              <a href="#" aria-label="facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" aria-label="github"><i class="fab fa-github"></i></a>
+              <a href="#" aria-label="linkedin"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+
+            <div class="hero-cta">
+              <button class="btn btn-primary">Download CV</button>
+              <button class="btn btn-outline">Hire Me</button>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="profile-ring" aria-hidden="true">
+              <img src="images/1x1.jpg" alt="Profile" class="profile-img" />
+            </div>
+          </div>
+        </div>
+
+        <button class="scroll-indicator" aria-label="Scroll to about" title="Scroll to next section">
+          <span class="arrow">⌄</span>
+        </button>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="snap-section panel container">
+        <div>
+          <h2>About</h2>
+          <p>About content here — introduce yourself, your studies, interests, and goals.</p>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" class="snap-section panel container">
+        <div>
+          <h2>Skills</h2>
+          <ul class="skills-list">
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>JavaScript</li>
+            <li>Responsive Design</li>
+            <li>Git &amp; GitHub</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="snap-section panel container">
+        <div>
+          <h2>Projects</h2>
+          <article class="card">
+            <h3>E-Commerce Website</h3>
+            <p>A basic E-Commerce Website</p>
+          </article>
+          <article class="card">
+            <h3>Portfolio Website</h3>
+            <p>A responsive portfolio using HTML, CSS, and JS.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="snap-section panel container">
+        <div>
+          <h2>Contact</h2>
+          <p>Email: renjie.basc@gmail.com</p>
+          <p>Phone: 09123456789</p>
+
+          <button id="welcomeBtn" class="glow-btn">Click Me</button>
+          <p id="message" class="message" aria-live="polite"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer container">
+      <p>© 2026 Web Development Laboratory Activity</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
